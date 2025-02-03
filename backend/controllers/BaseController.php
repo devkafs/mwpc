@@ -6,7 +6,7 @@ class BaseController {
         echo json_encode($data);
     }
 
-    protected function errorResponse($message, $status = 400) {
+    protected function errorResponse($message, $status = 500) {
         $this->jsonResponse(['error' => $message], $status);
     }
 }
