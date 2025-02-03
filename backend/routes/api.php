@@ -44,6 +44,12 @@ $router->get('/api/cpmi/{id}', function($id) {
     $controller->show($id);
 });
 
+$router->post('/api/cpmi', function() {
+    require_once __DIR__ . '/../controllers/CpmiController.php';
+    $controller = new CpmiController();
+    $controller->create();
+});
+
 // Handle the request
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
