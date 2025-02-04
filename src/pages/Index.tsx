@@ -1,66 +1,41 @@
-import { Card } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { Card } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { 
+  Users, 
+  DollarSign, 
+  Calendar,
+  UserCheck,
+  FileCheck,
+  Plane,
+  Building2
+} from "lucide-react"
+import { CPMIStats } from "@/components/dashboard/CPMIStats"
+import { FinanceReport } from "@/components/dashboard/FinanceReport"
+import { AttendanceReport } from "@/components/dashboard/AttendanceReport"
 
 const Index = () => {
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">MWPC System Dashboard</h1>
-      
-      {/* CPMI Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <Card className="p-4">
-          <h3 className="font-semibold text-sm text-gray-500">Pendaftaran</h3>
-          <p className="text-2xl font-bold">0</p>
-        </Card>
-        <Card className="p-4">
-          <h3 className="font-semibold text-sm text-gray-500">Seleksi</h3>
-          <p className="text-2xl font-bold">0</p>
-        </Card>
-        <Card className="p-4">
-          <h3 className="font-semibold text-sm text-gray-500">Pemberkasan</h3>
-          <p className="text-2xl font-bold">0</p>
-        </Card>
-        <Card className="p-4">
-          <h3 className="font-semibold text-sm text-gray-500">Siap Berangkat</h3>
-          <p className="text-2xl font-bold">0</p>
-        </Card>
+    <div className="container mx-auto p-6 space-y-8">
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold">Dashboard MWPC System</h1>
+        <span className="text-sm text-muted-foreground">
+          {new Date().toLocaleDateString('id-ID', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          })}
+        </span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Financial Summary */}
-        <Card className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Ringkasan Keuangan</h2>
-          <Separator className="my-4" />
-          <div className="space-y-4">
-            <div className="flex justify-between">
-              <span className="text-gray-600">Total Pemasukan</span>
-              <span className="font-semibold">Rp 0</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600">Total Pengeluaran</span>
-              <span className="font-semibold">Rp 0</span>
-            </div>
-          </div>
-        </Card>
-
-        {/* Attendance Summary */}
-        <Card className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Ringkasan Absensi LPK</h2>
-          <Separator className="my-4" />
-          <div className="space-y-4">
-            <div className="flex justify-between">
-              <span className="text-gray-600">Total CPMI Aktif</span>
-              <span className="font-semibold">0</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600">Kehadiran Hari Ini</span>
-              <span className="font-semibold">0</span>
-            </div>
-          </div>
-        </Card>
+      <CPMIStats />
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <FinanceReport />
+        <AttendanceReport />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index
